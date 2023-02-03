@@ -1,5 +1,7 @@
 "use strict";
 
+let result;
+
 // Looks for click on the calculate button and runs the read numbers funtion
 const calculate = document.querySelector("#calculate").addEventListener("click", doMath);
 
@@ -7,16 +9,23 @@ const calculate = document.querySelector("#calculate").addEventListener("click",
 function doMath() {
   let firstNumber = Number(document.querySelector("#firstnumber").value);
   let secondNumber = Number(document.querySelector("#secondnumber").value);
+  result = firstNumber + secondNumber;
   let operator = document.querySelector("#operator").value;
   console.log(firstNumber);
   console.log(secondNumber);
   if (operator === "add") {
     console.log(firstNumber + secondNumber);
+    result = firstNumber + secondNumber;
   } else if (operator === "sub") {
     console.log(firstNumber - secondNumber);
+    result = firstNumber - secondNumber;
   } else if (operator === "mul") {
     console.log(firstNumber * secondNumber);
+    result = firstNumber * secondNumber;
   } else {
     console.log(firstNumber / secondNumber);
+    result = firstNumber / secondNumber;
   }
+  document.querySelector("#firstnumber").value = result;
+  console.log("=", result);
 }
