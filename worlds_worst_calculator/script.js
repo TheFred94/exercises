@@ -1,6 +1,7 @@
 "use strict";
 
 let result;
+const resultList = document.querySelector("#results");
 
 // Looks for click on the calculate button and runs the read numbers funtion
 const calculate = document.querySelector("#calculate").addEventListener("click", doMath);
@@ -28,4 +29,11 @@ function doMath() {
   }
   document.querySelector("#firstnumber").value = result;
   console.log("=", result);
+
+  let createLi = document.createElement("li");
+  let addResultToList = document.createTextNode(result);
+  createLi.appendChild(addResultToList);
+  resultList.appendChild(createLi);
+
+  resultList.scrollTo(0, 1000000);
 }
