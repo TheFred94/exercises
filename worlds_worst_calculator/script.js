@@ -12,16 +12,20 @@ function doMath() {
   result = firstNumber + secondNumber;
   let operator = document.querySelector("#operator").value;
   let roundedDecimals = Number(document.querySelector("#decimals").value);
-  console.log("Rounded number", roundedDecimals);
+  //   Logs the first and second number
   console.log("First Number:", firstNumber);
   console.log("Second Number:", secondNumber);
-  const rounded = document.querySelector("#doround");
-  console.log(rounded.checked);
+  //   const for to target the checkbox
+  const doRoundChecked = document.querySelector("#doround");
   if (operator === "add") {
-    if (rounded.checked === true) {
-      Math.rounded;
+    if (doRoundChecked.checked === true) {
+      //   Logs the rounded number
+      console.log("Rounded number", roundedDecimals);
+      // Logs wether the checkbox is true or not
+      console.log(doRoundChecked.checked);
+      Math.round();
     }
-    console.log(firstNumber + secondNumber);
+
     result = firstNumber + secondNumber;
   } else if (operator === "sub") {
     console.log(firstNumber - secondNumber);
