@@ -2,7 +2,6 @@
 
 let result;
 const resultList = document.querySelector("#results");
-
 // Looks for click on the calculate button and runs the read numbers funtion
 const calculate = document.querySelector("#calculate").addEventListener("click", doMath);
 
@@ -12,9 +11,16 @@ function doMath() {
   let secondNumber = Number(document.querySelector("#secondnumber").value);
   result = firstNumber + secondNumber;
   let operator = document.querySelector("#operator").value;
-  console.log(firstNumber);
-  console.log(secondNumber);
+  let roundedDecimals = Number(document.querySelector("#decimals").value);
+  console.log("Rounded number", roundedDecimals);
+  console.log("First Number:", firstNumber);
+  console.log("Second Number:", secondNumber);
+  const rounded = document.querySelector("#doround");
+  console.log(rounded.checked);
   if (operator === "add") {
+    if (rounded.checked === true) {
+      Math.rounded;
+    }
     console.log(firstNumber + secondNumber);
     result = firstNumber + secondNumber;
   } else if (operator === "sub") {
