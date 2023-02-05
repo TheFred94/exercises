@@ -1,7 +1,7 @@
 "use strict";
 
-let resultRounded;
 let result;
+let resultRounded;
 let roundedDecimals;
 const resultList = document.querySelector("#results");
 // Looks for click on the calculate button and runs the read numbers funtion
@@ -12,7 +12,7 @@ function doMath() {
   let firstNumber = Number(document.querySelector("#firstnumber").value);
   let secondNumber = Number(document.querySelector("#secondnumber").value);
   let doRoundChecked = document.querySelector("#doround").checked;
-  result = firstNumber + secondNumber;
+  //   result = firstNumber + secondNumber;
   let operator = document.querySelector("#operator").value;
   console.log("First Number:", firstNumber);
   console.log("Second Number:", secondNumber);
@@ -21,38 +21,39 @@ function doMath() {
   if (doRoundChecked === false) {
     console.log(doRoundChecked);
     if (operator === "add") {
-      console.log(firstNumber + secondNumber);
+      console.log("=", firstNumber + secondNumber);
       result = firstNumber + secondNumber;
-      console.log(firstNumber - secondNumber);
+    } else if (operator === "sub") {
+      console.log("=", firstNumber - secondNumber);
       result = firstNumber - secondNumber;
     } else if (operator === "mul") {
+      console.log("=", firstNumber * secondNumber);
       result = firstNumber * secondNumber;
     } else {
-      console.log(firstNumber / secondNumber);
+      console.log("=", firstNumber / secondNumber);
+      result = firstNumber / secondNumber;
     }
   } else {
     console.log("Rounded Decimal", roundedDecimals);
     if (operator === "add") {
-      console.log(firstNumber + secondNumber);
+      console.log("=", firstNumber + secondNumber);
       resultRounded = firstNumber + secondNumber;
-      result = result.toFixed(roundedDecimals);
+      result = resultRounded.toFixed(roundedDecimals);
     } else if (operator === "sub") {
-      console.log(firstNumber - secondNumber);
+      console.log("=", firstNumber - secondNumber);
       resultRounded = firstNumber - secondNumber;
-      result = result.toFixed(roundedDecimals);
+      result = resultRounded.toFixed(roundedDecimals);
     } else if (operator === "mul") {
-      console.log(firstNumber * secondNumber);
+      console.log("=", firstNumber * secondNumber);
       resultRounded = firstNumber * secondNumber;
-      result = result.toFixed(roundedDecimals);
+      result = resultRounded.toFixed(roundedDecimals);
     } else {
-      console.log(firstNumber / secondNumber);
+      console.log("=", firstNumber / secondNumber);
       resultRounded = firstNumber / secondNumber;
-      result = result.toFixed(roundedDecimals);
+      result = resultRounded.toFixed(roundedDecimals);
     }
   }
-
   document.querySelector("#firstnumber").value = result;
-  console.log("=", result);
 
   let createLi = document.createElement("li");
   let addResultToList = document.createTextNode(result);
