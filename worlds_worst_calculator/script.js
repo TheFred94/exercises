@@ -7,7 +7,7 @@ const resultList = document.querySelector("#results");
 // Looks for click on the calculate button and runs the read numbers funtion
 const calculate = document.querySelector("#calculate").addEventListener("click", doMath);
 
-// Reads the numbers from the first, second and operator field
+// Does all the calculating including rounding numbers and listen for checked or unchecked in the round to checkbox
 function doMath() {
   let firstNumber = Number(document.querySelector("#firstnumber").value);
   let secondNumber = Number(document.querySelector("#secondnumber").value);
@@ -17,7 +17,6 @@ function doMath() {
   console.log("First Number:", firstNumber);
   console.log("Second Number:", secondNumber);
   let roundedDecimals = Number(document.querySelector("#decimals").value);
-  //   const for to target the checkbox
   if (doRoundChecked === false) {
     console.log(doRoundChecked);
     if (operator === "add") {
@@ -33,7 +32,10 @@ function doMath() {
       console.log("=", firstNumber / secondNumber);
       result = firstNumber / secondNumber;
     }
-  } else {
+  }
+  //   Else statement that runs when the checkbox is checked and true
+  //   Result rounded is defined as the roundedResult and is used to define the result as the roundedResult and round to a fixed value
+  else {
     console.log("Rounded Decimal", roundedDecimals);
     if (operator === "add") {
       console.log("=", firstNumber + secondNumber);
@@ -53,8 +55,11 @@ function doMath() {
       result = resultRounded.toFixed(roundedDecimals);
     }
   }
+
+  //   Tells what the result is and places it in the firstnumber input field
   document.querySelector("#firstnumber").value = result;
 
+  //   Creates an li elemnt to place the result and creates a long list which is scrollable
   let createLi = document.createElement("li");
   let addResultToList = document.createTextNode(result);
   createLi.appendChild(addResultToList);
