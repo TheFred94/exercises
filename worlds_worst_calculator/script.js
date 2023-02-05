@@ -3,9 +3,14 @@
 let result;
 let resultRounded;
 let roundedDecimals;
+
+// Const for the result list
 const resultList = document.querySelector("#results");
+
 // Looks for click on the calculate button and runs the read numbers funtion
 const calculate = document.querySelector("#calculate").addEventListener("click", doMath);
+
+document.querySelector("#clear").addEventListener("click", clearResults);
 
 // Does all the calculating including rounding numbers and listen for checked or unchecked in the round to checkbox
 function doMath() {
@@ -60,10 +65,27 @@ function doMath() {
   document.querySelector("#firstnumber").value = result;
 
   //   Creates an li elemnt to place the result and creates a long list which is scrollable
+  //   This appends the result to the end of the list
   let createLi = document.createElement("li");
   let addResultToList = document.createTextNode(result);
   createLi.appendChild(addResultToList);
   resultList.appendChild(createLi);
 
   resultList.scrollTo(0, 1000000);
+}
+
+// Clears the result list and appends the latest result in the list
+function clearResults() {
+  resultList.innerHTML = "";
+
+  //   Creates an li elemnt to place the result and creates a long list which is scrollable
+  //   This appends the result to the end of the list
+  let createLi = document.createElement("li");
+  let addResultToList = document.createTextNode(result);
+  createLi.appendChild(addResultToList);
+  resultList.appendChild(createLi);
+
+  //   Tells what the result is and places it in the firstnumber input field
+  document.querySelector("#firstnumber").value = result;
+  console.log("Results cleared");
 }
