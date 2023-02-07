@@ -28,18 +28,21 @@ function loop() {
   iterator++;
   letter = "";
   if (iterator <= maxNumberOfIterations) {
-    setTimeout(loop, 500);
+    setTimeout(loop, 300);
     letter = typewriterText[iterator - 1];
     typewriter.textContent += letter;
     if (letter === " ") {
       document.querySelector("#typespace").currentTime = 0;
       document.querySelector("#typespace").play();
     } else {
-      document.querySelector(`#typekey${ranSound}`).currentTime = 0;
       document.querySelector(`#typekey${ranSound}`).play();
+      document.querySelector(`#typekey${ranSound}`).currentTime = 0;
+      setTimeout(document.querySelector("#typekey") + ranSound) + 50;
     }
-    // document.querySelector("#typereturn").volume = 1;
-    // document.querySelector("#typereturn").currentTime = 0;
-    // document.querySelector("#typereturn").play();
+  } else {
+    document.querySelector("#typereturn").volume = 1;
+    document.querySelector("#typereturn").currentTime = 0;
+    document.querySelector("#typereturn").play();
+    console.log("Return");
   }
 }
