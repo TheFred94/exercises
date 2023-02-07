@@ -1,9 +1,11 @@
 "use strict";
-let iterator = 0;
+let iterator = -1;
 
 let letter;
-const typewriterText = document.getElementById("typewriter").textContent;
-const maxNumberOfIterations = typewriterText.length;
+let typewriterText;
+const typewriter = document.getElementById("typewriter");
+typewriterText = typewriter.textContent;
+const maxNumberOfIterations = typewriterText.length - 1;
 
 initLoop();
 
@@ -16,7 +18,10 @@ function initLoop() {
 function loop() {
   console.log(typewriterText[iterator]);
   iterator++;
+  letter = "";
   if (iterator <= maxNumberOfIterations) {
     setTimeout(loop, 200);
+    letter = typewriterText[iterator];
+    typewriter.textContent += letter;
   }
 }
