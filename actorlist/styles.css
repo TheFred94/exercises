@@ -1,0 +1,79 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+article {
+  padding-block: 20px;
+  cursor: pointer;
+  padding-inline-start: 50px;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
+
+#popup {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  background-color: rgba(31, 31, 31, 0.8);
+  overflow: scroll;
+  padding: 0;
+  margin: 0;
+}
+
+.close {
+  position: fixed;
+  font-size: 1.7rem;
+  font-weight: bolder;
+  color: white;
+  cursor: pointer;
+}
+
+.popup_details {
+  padding: 0;
+  margin: 0;
+}
+
+#popup article {
+  transition: 1sec;
+  width: 100vw;
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 10rem auto;
+
+  background-color: #ffff;
+}
+
+.details_actor_name {
+  color: #881a1a;
+}
+
+.details_movie_name {
+  padding-block-start: 20px;
+  color: #2f2f2f;
+}
+
+.color_goodfellas {
+  background-color: green;
+}
+.color_pulp_fiction {
+  background-color: aquamarine;
+}
+.color_inception {
+  background-color: bisque;
+}
+.color_fight_club {
+  background-color: antiquewhite;
+}

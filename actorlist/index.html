@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header><h1>Actors and movies</h1></header>
+    <nav>
+      <button class="clicked" data-movie="all">All</button>
+      <button data-movie="Pulp Fiction">Pulp Fiction</button>
+      <button data-movie="Inception">Inception</button>
+      <button data-movie="Fight Club">Fight Club</button>
+      <button data-movie="Goodfellas">Goodfellas</button>
+    </nav>
+
+    <main></main>
+
+    <template>
+      <article>
+        <h2 class="actor_name"></h2>
+        <p class="movie_name"></p>
+      </article>
+    </template>
+
+    <section id="popup" class="close">
+      <div class="luk">&#x2715</div>
+      <article class="popup_details">
+        <h2 class="details_actor_name"></h2>
+        <p class="details_movie_name"></p>
+      </article>
+    </section>
+
+    <script src="script.js"></script>
+  </body>
+</html>
