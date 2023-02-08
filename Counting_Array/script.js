@@ -1,6 +1,6 @@
 "use strict";
 
-let arr = [];
+const arr = [];
 let iterator = 0;
 
 initLoop();
