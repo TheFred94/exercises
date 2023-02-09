@@ -2,14 +2,7 @@
 
 const arr = [];
 let iterator = 0;
-
-initLoop();
-
-function initLoop() {
-  console.log("initLoop");
-
-  loop();
-}
+loop();
 
 function loop() {
   console.log("loop", iterator);
