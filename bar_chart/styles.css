@@ -1,0 +1,13 @@
+#bars {
+  display: flex;
+  height: 300px;
+  width: 100%;
+}
+.bar {
+  flex-grow: 1;
+  border: 1px solid black;
+  background-color: aqua;
+  margin-right: 1px;
+  height: 60%;
+  align-self: flex-end;
+}
