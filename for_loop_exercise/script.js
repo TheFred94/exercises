@@ -28,8 +28,8 @@ function zeroToTen() {
 
 // Counts from 1 - 10
 function oneToTen() {
-  for (let counter = 1; counter < 11; counter++) {
-    console.log(counter);
+  for (let i = 1; i < 11; i++) {
+    console.log(i);
   }
 }
 
