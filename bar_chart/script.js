@@ -39,7 +39,7 @@ function addRandomBars() {
       } else {
         bars.removeChild(bars.firstChild);
       }
-    }, 1000 * i);
+    }, 300 * i);
     console.log("bar added");
     numbers.push(Math.floor(Math.random()) * 100);
   }
