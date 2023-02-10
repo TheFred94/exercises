@@ -52,22 +52,30 @@ function prepareObjects(jsonData) {
     const studentCard = Object.create(Student);
     // Splits the fullname string into parts ----------------------
     let fullName = jsonObject.fullname;
-    console.log(fullName);
-    let result = "";
+    // console.log(fullName);
+    let nameResult = "";
     // Trims the fullName string
     let fullnameTrim = fullName.trim();
-    console.log(fullnameTrim);
+    // console.log(fullnameTrim);
 
     // First name - Which takes the substring from 0 at the index if (" ")
-    result = fullnameTrim.substring(0, fullnameTrim.indexOf(" "));
+    nameResult = fullnameTrim.substring(0, fullnameTrim.indexOf(" "));
     if (fullnameTrim === "Leanne") {
-      result = fullName;
+      nameResult = fullName;
     }
 
-    // Takes the firstname from the Object Template and equals it to the fullname property in in the json file
-    // This takes the first name and takes the first letter at 0, makes it uppercase + the result and slices it a index 1 and makes it uppercase.
-    studentCard.firstname = result.charAt(0).toUpperCase() + result.slice(1).toLowerCase();
-    studentCard.house = jsonObject.house;
+    // House
+    let houseString = jsonObject.house;
+    let houseResult = "";
+    let houseTrim = houseString.trim();
+    console.log(houseTrim);
+
+    houseResult = houseTrim.substring();
+    console.log(houseResult);
+
+    // This takes the first name and takes the first letter at 0, makes it uppercase + the nameResult and slices it a index 1 and makes it uppercase.
+    studentCard.firstname = nameResult.charAt(0).toUpperCase() + nameResult.slice(1).toLowerCase();
+    studentCard.house = houseResult.charAt(0).toUpperCase() + houseResult.slice(1).toLowerCase();
     // Pushes all the students from the array into a studentcard and displays the data
     allStudents.push(studentCard);
   });
