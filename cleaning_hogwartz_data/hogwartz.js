@@ -21,7 +21,7 @@ function loadPage() {
   loadJSON();
 }
 
-// Runs the async function that fetches the data from the Json
+// Runs the async function that fetches the data from the Json------------------------------
 // Not sure if this is needed at all?
 async function getData(studentDataUrl) {
   const result = await fetch(studentDataUrl);
@@ -29,7 +29,7 @@ async function getData(studentDataUrl) {
   showListOfStudents();
 }
 
-// Loads the Json and prepares the data for the following functions
+// Loads the Json and prepares the data for the following functions---------------------------
 function loadJSON() {
   fetch(studentDataUrl)
     .then((response) => response.json())
@@ -40,7 +40,7 @@ function loadJSON() {
   console.log(allStudents);
 }
 
-// Shows the list of students
+// Shows the list of students---------------------------------------------
 function showListOfStudents() {
   console.log(students);
   prepareObjects(jsonData);
@@ -50,11 +50,23 @@ function prepareObjects(jsonData) {
   jsonData.forEach((jsonObject) => {
     // Creates a const with the name student card that contains all the information from the Object
     const studentCard = Object.create(Student);
-    const fullName = jsonObject.fullname.split(" ");
+    // Splits the fullname string into parts ----------------------
+    let fullName = jsonObject.fullname;
+    console.log(fullName);
+    let result = "";
+    // Trims the fullName string
+    let fullnameTrim = fullName.trim();
+    console.log(fullnameTrim);
+
+    // First name - Which takes the substring from 0 at the index if (" ")
+    result = fullnameTrim.substring(0, fullnameTrim.indexOf(" "));
+    if (fullnameTrim === "Leanne") {
+      result = fullName;
+    }
 
     // Takes the firstname from the Object Template and equals it to the fullname property in in the json file
-    // This takes the first name
-    studentCard.firstname = fullName[0];
+    // This takes the first name and takes the first letter at 0, makes it uppercase + the result and slices it a index 1 and makes it uppercase.
+    studentCard.firstname = result.charAt(0).toUpperCase() + result.slice(1).toLowerCase();
     studentCard.house = jsonObject.house;
     // Pushes all the students from the array into a studentcard and displays the data
     allStudents.push(studentCard);
@@ -62,7 +74,7 @@ function prepareObjects(jsonData) {
   displayList();
 }
 
-// Displays the list of data from the json file
+// Displays the list of data from the json file-----------------------------------
 function displayList() {
   // Grabs the id="list" and the tbody element from the HTML and empties the content
   document.querySelector("#list tbody").innterHTML = "";
