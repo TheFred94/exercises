@@ -36,6 +36,8 @@ function loadJSON() {
     .then((jsonData) => {
       prepareObjects(jsonData);
     });
+  // Shows the array with all the students in the console
+  console.log(allStudents);
 }
 
 // Shows the list of students
@@ -48,11 +50,12 @@ function prepareObjects(jsonData) {
   jsonData.forEach((jsonObject) => {
     // Creates a const with the name student card that contains all the information from the Object
     const studentCard = Object.create(Student);
-    // const fullName = jsonObject.fullname.split(" ");
+    const fullName = jsonObject.fullname.split(" ");
 
     // Takes the firstname from the Object Template and equals it to the fullname property in in the json file
-    studentCard.firstname = jsonObject.fullname;
-
+    // This takes the first name
+    studentCard.firstname = fullName[0];
+    studentCard.house = jsonObject.house;
     // Pushes all the students from the array into a studentcard and displays the data
     allStudents.push(studentCard);
   });
@@ -75,6 +78,7 @@ function displayStudent(studentCard) {
 
   // Grabs the firstname data field in the HTML and displays the textcontent from the studentCard firstname property
   clone.querySelector("[data-field=firstname]").textContent = studentCard.firstname;
+  clone.querySelector("[data-field=house]").textContent = studentCard.house;
 
   document.querySelector("#list tbody").appendChild(clone);
 }
