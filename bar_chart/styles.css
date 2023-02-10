@@ -19,6 +19,10 @@
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
+
+.new-bar-height {
+  transition: height 1000ms ease-in-out;
+}
 @keyframes move {
   0% {
     transform: translateX(0%);

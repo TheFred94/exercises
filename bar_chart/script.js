@@ -22,8 +22,15 @@ function updateBars() {
 // While removing the first number in the array
 function showData() {
   const randomNumber = Math.floor(Math.random() * 100);
+  const newestBar = barElements[barElements.length - 1];
+  newestBar.style.height = "0";
+  newestBar.style.height = numbers[numbers.length - 1] + "%";
+  newestBar.classList.add("new-bar-height");
   numbers.shift();
   console.log("Latest random number:", randomNumber);
   numbers.push(randomNumber);
   document.querySelector(".bar").addEventListener("animationiteration", updateBars);
+  newestBar.addEventListener("transitionend", () => {
+    newestBar.classList.remove("new-bar-height");
+  });
 }
