@@ -1,0 +1,19 @@
+#list {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#list th,
+#list td {
+  border: 1px solid black;
+  padding: 8px;
+  text-align: left;
+}
+
+#list th {
+  background-color: lightgray;
+}
+
+#list tr:nth-child(even) {
+  background-color: rgb(173, 230, 210);
+}

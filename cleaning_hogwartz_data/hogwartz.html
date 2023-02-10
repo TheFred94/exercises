@@ -11,27 +11,30 @@
     <h1>Students of Hogwartz</h1>
     <main></main>
     <table id="list">
-        <thead>
-            <tr>
-                <th>Firstname</th>
-                <th>Middlename</th>
-                <th>Lastname</th>
-                <th>Nickname</tr>
-                <th>House</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- The student template will be copied here -->
-        </tbody>
+      <thead>
+        <tr>
+          <th>Portrait</th>
+          <th>First name</th>
+          <th>Nick name</th>
+          <th>Middle name</th>
+          <th>Last name</th>
+          <th>House</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- The student template will be copied here -->
+      </tbody>
     </table>
 
     <template id="student">
-        <tr data-field="firstname"></tr>
-        <tr data-field="middlename"></tr>
-        <tr data-field="lastname"></tr>
-        <tr data-field="nickname"></tr>
-        
-        <tr data-field="house"></tr>
+      <tr>
+        <td data-field="portrait"></td>
+        <td data-field="firstname"></td>
+        <td data-field="nickname"></td>
+        <td data-field="middlename"></td>
+        <td data-field="lastname"></td>
+        <td data-field="house"></td>
+      </tr>
     </template>
     <script src="hogwartz.js"></script>
   </body>
