@@ -3,6 +3,8 @@
 window.addEventListener("DOMContentLoaded", start);
 
 const allAnimals = [];
+
+// This is the object prototype for the animals look at the CAPITAL A for the object template
 const Animal = {
   name: "",
   type: "unknown",
@@ -28,15 +30,18 @@ function loadJSON() {
 function prepareObjects(jsonData) {
   jsonData.forEach((jsonObject) => {
     const animal = Object.create(Animal);
+    // Looks at the fullname in the json file and splits the name
     const fullName = jsonObject.fullname.split(" ");
+    // Takes the age from the json file and inserts it into the Object
     animal.age = jsonObject.age;
+    // Takes the first part from the "fullname" the name and puts it into a string
     animal.name = fullName[0];
+    // Takes the second part from the "fullname" the name and puts it into a string
     animal.desc = fullName[2];
+    // Takes the third part from the "fullname" the name and puts it into a string
     animal.type = fullName[3];
     allAnimals.push(animal);
     // TODO: Create new object with cleaned data - and store that in the allAnimals array
-
-    // TODO: MISSING CODE HERE !!!
   });
 
   displayList();
