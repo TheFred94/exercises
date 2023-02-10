@@ -12,14 +12,18 @@ function updateBars() {
   for (let i = 0; i < barElements.length; i++) {
     barElements[i].style.height = numbers[i] + "%";
   }
+  document.querySelectorAll(".bar").forEach((div) => {
+    div.classList.add("animation");
+  });
+  showData();
 }
 
 // Every second the data updates, generates a new number and
 // While removing the first number in the array
-setInterval(() => {
+function showData() {
   const randomNumber = Math.floor(Math.random() * 100);
   numbers.shift();
   console.log("Latest random number:", randomNumber);
   numbers.push(randomNumber);
-  updateBars();
-}, 1000);
+  document.querySelector(".bar").addEventListener("animationiteration", updateBars);
+}

@@ -12,3 +12,18 @@
   width: 30px;
   align-self: flex-end;
 }
+
+.animation {
+  animation-name: move;
+  animation-duration: 1000ms;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+@keyframes move {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
