@@ -46,35 +46,50 @@ function showListOfStudents() {
   prepareObjects(jsonData);
 }
 
+// This is where all the magic happens ----------------------------------------
 function prepareObjects(jsonData) {
   jsonData.forEach((jsonObject) => {
     // Creates a const with the name student card that contains all the information from the Object
     const studentCard = Object.create(Student);
-    // Splits the fullname string into parts ----------------------
+    // Splits the fullname string into parts
     let fullName = jsonObject.fullname;
-    // console.log(fullName);
+    //*  console.log(fullName);
     let nameResult = "";
     // Trims the fullName string
     let fullnameTrim = fullName.trim();
-    // console.log(fullnameTrim);
+    console.log(fullnameTrim);
 
-    // First name - Which takes the substring from 0 at the index if (" ")
+    // Firstname - Which takes the substring from 0 at the index if (" ") --------------
     nameResult = fullnameTrim.substring(0, fullnameTrim.indexOf(" "));
     if (fullnameTrim === "Leanne") {
       nameResult = fullName;
     }
+    // * console.log(fullnameTrim);
 
-    // House
+    // Middlename --------------------------------
+    let firstname = "";
+    let middlename = "";
+    let lastname = "";
+
+    firstname = fullName.substring(0, fullName.indexOf(" "), fullName.lastIndexOf(" "));
+    middlename = fullName.substring(fullName.indexOf(" "), fullName.lastIndexOf(" "));
+    lastname = fullName.substring(fullName.lastIndexOf(" "));
+    console.log(lastname);
+
+    // House -------------
     let houseString = jsonObject.house;
     let houseResult = "";
     let houseTrim = houseString.trim();
-    console.log(houseTrim);
+    //* console.log(houseTrim);
 
     houseResult = houseTrim.substring();
     console.log(houseResult);
 
     // This takes the first name and takes the first letter at 0, makes it uppercase + the nameResult and slices it a index 1 and makes it uppercase.
     studentCard.firstname = nameResult.charAt(0).toUpperCase() + nameResult.slice(1).toLowerCase();
+    // The lastname concatenation for the student data
+    studentCard.lastname = lastname;
+    // This is the concatenation for the house data
     studentCard.house = houseResult.charAt(0).toUpperCase() + houseResult.slice(1).toLowerCase();
     // Pushes all the students from the array into a studentcard and displays the data
     allStudents.push(studentCard);
@@ -99,6 +114,7 @@ function displayStudent(studentCard) {
   // Grabs the firstname data field in the HTML and displays the textcontent from the studentCard firstname property
   clone.querySelector("[data-field=firstname]").textContent = studentCard.firstname;
   clone.querySelector("[data-field=house]").textContent = studentCard.house;
+  clone.querySelector("[data-field=lastname]").textContent = studentCard.lastname;
 
   document.querySelector("#list tbody").appendChild(clone);
 }
