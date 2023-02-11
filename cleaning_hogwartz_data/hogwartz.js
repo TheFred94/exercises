@@ -55,7 +55,7 @@ function prepareObjects(jsonData) {
     let fullName = jsonObject.fullname;
     //*  console.log(fullName);
     let firstnameResult = "";
-    let lastnameResult = "";
+
     // Trims the fullName string
     let fullnameTrim = fullName.trim();
     console.log(fullName);
@@ -87,6 +87,15 @@ function prepareObjects(jsonData) {
       studentCard.middlename = "Null";
     }
 
+    // Lastname --------------------------------------------
+    let lastname = "";
+    let lastnameTrim = "";
+
+    lastnameTrim = fullName.trimEnd();
+    lastname = lastnameTrim;
+
+    let lastnameResult = lastname.substring(lastnameTrim.lastIndexOf(" ") + 1);
+
     // House -------------
     let houseString = jsonObject.house;
     let houseResult = "";
@@ -100,6 +109,7 @@ function prepareObjects(jsonData) {
     studentCard.firstname = firstnameResult.charAt(0).toUpperCase() + firstnameResult.slice(1).toLowerCase();
     // The lastname concatenation for the student data
     studentCard.middlename = middlename.charAt(0).toUpperCase() + middlename.slice(1).toLowerCase();
+    studentCard.lastname = lastnameResult.charAt(0).toUpperCase() + lastnameResult.slice(1).toLowerCase();
     // This is the concatenation for the house data
     studentCard.house = houseResult.charAt(0).toUpperCase() + houseResult.slice(1).toLowerCase();
     // Pushes all the students from the array into a studentcard and displays the data
