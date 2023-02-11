@@ -96,7 +96,10 @@ function prepareObjects(jsonData) {
 
     let lastnameResult = lastname.substring(lastnameTrim.lastIndexOf(" ") + 1);
 
-    // House -------------
+    // Nicknames
+    let nicknameResult = fullName.substring(fullName.indexOf(`"`), fullName.lastIndexOf(`"`) + 1);
+
+    // House ----------------------------------------------------
     let houseString = jsonObject.house;
     let houseResult = "";
     let houseTrim = houseString.trim();
@@ -105,10 +108,15 @@ function prepareObjects(jsonData) {
     houseResult = houseTrim.substring();
     console.log(houseResult);
 
-    // This takes the first name and takes the first letter at 0, makes it uppercase + the nameResult and slices it a index 1 and makes it uppercase.
+    // Concatenation of the studentCard data ------------------------------------------------------------
+
+    // Firstname concatenation
     studentCard.firstname = firstnameResult.charAt(0).toUpperCase() + firstnameResult.slice(1).toLowerCase();
-    // The lastname concatenation for the student data
+    // Nickname concatenation
+    studentCard.nickname = nicknameResult;
+    // Middlename concatenation
     studentCard.middlename = middlename.charAt(0).toUpperCase() + middlename.slice(1).toLowerCase();
+    // The lastname concatenation
     studentCard.lastname = lastnameResult.charAt(0).toUpperCase() + lastnameResult.slice(1).toLowerCase();
     // This is the concatenation for the house data
     studentCard.house = houseResult.charAt(0).toUpperCase() + houseResult.slice(1).toLowerCase();
@@ -134,9 +142,11 @@ function displayStudent(studentCard) {
 
   // Grabs the firstname data field in the HTML and displays the textcontent from the studentCard firstname property
   clone.querySelector("[data-field=firstname]").textContent = studentCard.firstname;
-  clone.querySelector("[data-field=house]").textContent = studentCard.house;
+  clone.querySelector("[data-field=nickname]").textContent = studentCard.nickname;
+
   clone.querySelector("[data-field=middlename]").textContent = studentCard.middlename;
   clone.querySelector("[data-field=lastname]").textContent = studentCard.lastname;
+  clone.querySelector("[data-field=house]").textContent = studentCard.house;
 
   document.querySelector("#list tbody").appendChild(clone);
 }
