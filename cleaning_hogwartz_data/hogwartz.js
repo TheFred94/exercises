@@ -42,7 +42,7 @@ function loadJSON() {
 
 // Shows the list of students---------------------------------------------
 function showListOfStudents() {
-  console.log(students);
+  // * console.log(students);
   prepareObjects(jsonData);
 }
 
@@ -58,7 +58,7 @@ function prepareObjects(jsonData) {
 
     // Trims the fullName string
     let fullnameTrim = fullName.trim();
-    console.log(fullName);
+    // * console.log(fullName);
 
     // Firstname - Which takes the substring from 0 at the index if (" ") --------------
     firstnameResult = fullnameTrim.substring(0, fullnameTrim.indexOf(" "));
@@ -79,13 +79,12 @@ function prepareObjects(jsonData) {
 
     middlename = middlenameResult;
 
-    console.log(middlename);
-
     if (studentCard.middlename === "" || studentCard.middlename === studentCard.firstname) {
       studentCard.middlename = "Null";
     } else if (studentCard.middleName.indexOf(`"`) + studentCard.middlename.lastindexOf(`"`)) {
       studentCard.middlename = "Null";
     }
+    // * console.log(middlename);
 
     // Lastname --------------------------------------------
     let lastname = "";
@@ -95,6 +94,16 @@ function prepareObjects(jsonData) {
     lastname = lastnameTrim;
 
     let lastnameResult = lastname.substring(lastnameTrim.lastIndexOf(" ") + 1);
+
+    if (lastnameResult.includes("-")) {
+      let lastnameHyphen = lastname.split("-");
+      console.log(lastnameHyphen);
+      studentCard.lastname = lastnameResult;
+    } else {
+      studentCard.lastname = lastnameResult.charAt(0).toUpperCase() + lastnameResult.slice(1).toLowerCase();
+    }
+
+    // * console.log(lastname);
 
     // Nicknames
     let nicknameResult = fullName.substring(fullName.indexOf(`"`), fullName.lastIndexOf(`"`) + 1);
@@ -106,7 +115,7 @@ function prepareObjects(jsonData) {
     //* console.log(houseTrim);
 
     houseResult = houseTrim.substring();
-    console.log(houseResult);
+    // * console.log(houseResult);
 
     // Concatenation of the studentCard data ------------------------------------------------------------
 
@@ -116,8 +125,9 @@ function prepareObjects(jsonData) {
     studentCard.nickname = nicknameResult;
     // Middlename concatenation
     studentCard.middlename = middlename.charAt(0).toUpperCase() + middlename.slice(1).toLowerCase();
-    // The lastname concatenation
-    studentCard.lastname = lastnameResult.charAt(0).toUpperCase() + lastnameResult.slice(1).toLowerCase();
+    // Lastname
+
+    console.log(studentCard.lastname);
     // This is the concatenation for the house data
     studentCard.house = houseResult.charAt(0).toUpperCase() + houseResult.slice(1).toLowerCase();
     // Pushes all the students from the array into a studentcard and displays the data
@@ -143,7 +153,6 @@ function displayStudent(studentCard) {
   // Grabs the firstname data field in the HTML and displays the textcontent from the studentCard firstname property
   clone.querySelector("[data-field=firstname]").textContent = studentCard.firstname;
   clone.querySelector("[data-field=nickname]").textContent = studentCard.nickname;
-
   clone.querySelector("[data-field=middlename]").textContent = studentCard.middlename;
   clone.querySelector("[data-field=lastname]").textContent = studentCard.lastname;
   clone.querySelector("[data-field=house]").textContent = studentCard.house;
