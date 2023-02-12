@@ -79,13 +79,14 @@ function prepareObjects(jsonData) {
 
     middlename = middlenameResult;
 
-    if (studentCard.middlename === "" || studentCard.middlename === studentCard.firstname) {
-      studentCard.middlename = "Null";
-    } else if (studentCard.middleName.indexOf(`"`) + studentCard.middlename.lastindexOf(`"`)) {
-      studentCard.middlename = "Null";
+    // If the middlename contains `\"`then the middlename shouldn't display
+    if (fullName.includes(`\"`) === true) {
+      studentCard.middlename = "";
+    } else {
+      studentCard.middlename = middlename.charAt(0).toUpperCase() + middlename.slice(1).toLowerCase();
     }
-    // * console.log(middlename);
 
+    console.log(fullnameTrim);
     // Lastname --------------------------------------------
     let lastname = "";
     let lastnameTrim = "";
@@ -97,7 +98,7 @@ function prepareObjects(jsonData) {
 
     if (lastnameResult.includes("-")) {
       let lastnameHyphen = lastname.split("-");
-      console.log(lastnameHyphen);
+      // * console.log(lastnameHyphen);
       studentCard.lastname = lastnameResult;
     } else {
       studentCard.lastname = lastnameResult.charAt(0).toUpperCase() + lastnameResult.slice(1).toLowerCase();
@@ -124,10 +125,8 @@ function prepareObjects(jsonData) {
     // Nickname concatenation
     studentCard.nickname = nicknameResult;
     // Middlename concatenation
-    studentCard.middlename = middlename.charAt(0).toUpperCase() + middlename.slice(1).toLowerCase();
-    // Lastname
 
-    console.log(studentCard.lastname);
+    // * console.log(studentCard.lastname);
     // This is the concatenation for the house data
     studentCard.house = houseResult.charAt(0).toUpperCase() + houseResult.slice(1).toLowerCase();
     // Pushes all the students from the array into a studentcard and displays the data
