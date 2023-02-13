@@ -29,14 +29,31 @@ function capitalize(str) {
 }
 
 // Name parts exercise
-
-let myName = "Frederik Rømer Larsen";
+let myName = "Harry Potter";
 
 getNameParts(myName);
 
+// function getNameParts(fullname) {
+//   let firstName = fullname.substring(0, fullname.indexOf(" "));
+
+//   let middleName = fullname.substring(fullname.indexOf(" ") + 1, fullname.lastIndexOf(" "));
+
+//   let lastName = fullname.substring(fullname.lastIndexOf(" ") + 1);
+//   console.log(firstName, middleName, lastName);
+// }
+
+// Fullname exercise
+
 function getNameParts(fullname) {
   let firstName = fullname.substring(0, fullname.indexOf(" "));
-  let middleName = fullname.substring(fullname.indexOf(" ") + 1, fullname.lastIndexOf(" "));
+  let middleName;
+
+  if ((middleName = fullname.substring(fullname.indexOf(" "), fullname.lastIndexOf(" ") === ""))) {
+    middleName = "undefined";
+  } else {
+    middleName = fullname.substring(fullname.indexOf(" ") + 1, fullname.lastIndexOf(" "));
+  }
+
   let lastName = fullname.substring(fullname.lastIndexOf(" ") + 1);
   console.log(firstName, middleName, lastName);
 }
