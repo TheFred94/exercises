@@ -29,7 +29,7 @@ function capitalize(str) {
 }
 
 // Name parts exercise
-let myName = "Harry Potter";
+let myName = "Potter Harry James";
 
 getNameParts(myName);
 
@@ -43,17 +43,25 @@ getNameParts(myName);
 // }
 
 // Fullname exercise
-
 function getNameParts(fullname) {
   let firstName = fullname.substring(0, fullname.indexOf(" "));
   let middleName;
-
-  if ((middleName = fullname.substring(fullname.indexOf(" "), fullname.lastIndexOf(" ") === ""))) {
-    middleName = "undefined";
-  } else {
-    middleName = fullname.substring(fullname.indexOf(" ") + 1, fullname.lastIndexOf(" "));
-  }
-
   let lastName = fullname.substring(fullname.lastIndexOf(" ") + 1);
   console.log(firstName, middleName, lastName);
+
+  if ((middleName = fullname.substring(fullname.indexOf(" "), fullname.lastIndexOf(" ")) === "")) {
+    middleName = undefined;
+  } else {
+    middleName = fullname.substring(fullname.indexOf(" ") + 1, fullname.lastIndexOf(" "));
+
+    createFullName("Potter", "Harry", "James");
+  }
+
+  function createFullName(lastName, firstName, middleName) {
+    if (middleName === undefined) {
+      console.log(firstName, lastName);
+    } else {
+      console.log(firstName, middleName, lastName);
+    }
+  }
 }
