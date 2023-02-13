@@ -25,5 +25,5 @@ let theName = "FredeRiK";
 capitalize(theName);
 
 function capitalize(str) {
-  console.log(`${str}`.substring(0, 1).toUpperCase() + `${str}`.substring(1).toLowerCase());
+  console.log(`${str.substring(0, 1).toUpperCase()}${str.substring(1).toLowerCase()}`);
 }
