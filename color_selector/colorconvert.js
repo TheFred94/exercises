@@ -25,10 +25,15 @@ function convertToRGB(cssCol) {
 }
 
 function convertRGBtoHEX(r, g, b) {
+  // This creates a string from the convertToRGB function and creates a "padZero" function which is run further down the script
   r = padZero(r.toString(16));
   g = padZero(g.toString(16));
   b = padZero(b.toString(16));
 
+  //! The return statement in this function function is used to return the final hexadecimal string representation of the RGB color
+  //* The function takes three arguments r, g, and b, which represent the red, green, and blue components of an RGB color.
+  //? First, each component is converted to a hexadecimal string representation using the toString method and passing 16 as an argument. The resulting string is then passed to the padZero function to ensure that it has at least two characters.
+  //TODO Finally, the three hexadecimal strings are concatenated with the # symbol to form the final hexadecimal string representation of the RGB color. This string is returned by the function using the return statement.
   return `#${r}${g}${b}`;
 }
 
