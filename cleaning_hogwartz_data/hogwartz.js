@@ -53,7 +53,7 @@ function prepareObjects(jsonData) {
     const studentCard = Object.create(Student);
     // Splits the fullname string into parts
     let fullName = jsonObject.fullname;
-    //*  console.log(fullName);
+    //* console.log(fullName);
     let firstnameResult = "";
 
     // Trims the fullName string
