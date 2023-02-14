@@ -1,43 +1,75 @@
 "use strict";
 
-convertToRGB("rgb(12, 56, 223)");
+document.addEventListener("DOMContentLoaded", loadPage);
 
-function convertToRGB(cssCol) {
-  const numberStr = cssCol.substring(cssCol.indexOf("(") + 1, cssCol.indexOf(")"));
+function loadPage() {
+  console.log("Ready to color");
+  addEvents();
+}
 
-  console.log(numberStr);
+const selector = document.querySelector("input");
 
-  let colorSplit = numberStr.split(",");
+function addEvents() {
+  selector.addEventListener("input", getColors);
+}
 
-  console.log(colorSplit);
+function getColors() {
+  // Takes the value from the color input and stores it in "hex"
+  hex = selector.value;
 
-  let r = parseInt(colorSplit[0].trim(0));
-  let g = parseInt(colorSplit[1].trim(0));
-  let b = parseInt(colorSplit[2].trim(0));
+  // The function calculateRGB will receive the value from "hex" from this function, when used as a parameter for the function
+  calculateRGB(hex);
+}
+
+// This function uses the parameter from the getColors function
+function calculateRGB(hex) {
+  console.log(hex);
+
+  let r = parseInt(hex.substring(1, 3), 16);
+  let g = parseInt(hex.substring(3, 5), 16);
+  let b = parseInt(hex.substring(5, 7), 16);
 
   console.log("R", r);
   console.log("G", g);
   console.log("B", b);
-
-  let hexColor = convertRGBtoHEX(r, g, b);
-
-  console.log(`RGB: (${r}, ${g}, ${b}) => HEX: ${hexColor}`);
+  // Brings the values from the r, g, b from this function over to the convertRGBtoHSL when used as a parameter in that function
+  convertRGBtoHSL(r, g, b);
 }
 
-function convertRGBtoHEX(r, g, b) {
-  // This creates a string from the convertToRGB function and creates a "padZero" function which is run further down the script
-  r = padZero(r.toString(16));
-  g = padZero(g.toString(16));
-  b = padZero(b.toString(16));
+function convertRGBtoHSL(r, g, b) {
+  r /= 255;
+  g /= 255;
+  b /= 255;
 
-  //! The return statement in this function function is used to return the final hexadecimal string representation of the RGB color
-  //* The function takes three arguments r, g, and b, which represent the red, green, and blue components of an RGB color.
-  //? First, each component is converted to a hexadecimal string representation using the toString method and passing 16 as an argument. The resulting string is then passed to the padZero function to ensure that it has at least two characters.
-  //TODO Finally, the three hexadecimal strings are concatenated with the # symbol to form the final hexadecimal string representation of the RGB color. This string is returned by the function using the return statement.
-  return `#${r}${g}${b}`;
-}
+  let h, s, l;
 
-// ChatGPT: The function takes a string str as an argument, and checks its length. If the length is 1, it returns a string "0" concatenated with hexStr. If the length is greater than 1, the original string hexStr is returned unchanged.
-function padZero(hexStr) {
-  return hexStr.length === 1 ? `0${hexStr}` : hexStr;
+  const min = Math.min(r, g, b);
+  const max = Math.max(r, g, b);
+
+  if (max === min) {
+    h = 0;
+  } else if (max === r) {
+    h = 60 * (0 + (g - b) / (max - min));
+  } else if (max === g) {
+    h = 60 * (2 + (b - r) / (max - min));
+  } else if (max === b) {
+    h = 60 * (4 + (r - g) / (max - min));
+  }
+
+  if (h < 0) {
+    h = h + 360;
+  }
+
+  l = (min + max) / 2;
+
+  if (max === 0 || min === 1) {
+    s = 0;
+  } else {
+    s = (max - l) / Math.min(l, 1 - l);
+  }
+  // multiply s and l by 100 to get the value in percent, rather than [0,1]
+  s *= 100;
+  l *= 100;
+
+  console.log("hsl(%f,%f%,%f%)", h, s, l);
 }
