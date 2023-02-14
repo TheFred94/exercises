@@ -2,7 +2,6 @@
 
 document.addEventListener("DOMContentLoaded", loadPage);
 
-
 function loadPage() {
   console.log("Ready to color");
   addEvents();
@@ -64,10 +63,8 @@ function convertRGBtoHSL(r, g, b) {
 
   l = (min + max) / 2;
 
-=======
-const selector = document.querySelector("input");
-let hex, r, g, b, h, s, l;
-
+  const selector = document.querySelector("input");
+}
 function loadPage() {
   console.log("Let's get coloring");
   selector.addEventListener("input", loadHexColor);
@@ -121,7 +118,6 @@ function calculateHSL(r, g, b) {
 
   l = (min + max) / 2;
 
-
   if (max === 0 || min === 1) {
     s = 0;
   } else {
@@ -131,11 +127,11 @@ function calculateHSL(r, g, b) {
   s *= 100;
   l *= 100;
 
-
   console.log(h, s, l);
   showColors(h, s, l);
   document.querySelector("#hsl").textContent = `${h.toFixed(0)}, ${s.toFixed(0)}%, ${l.toFixed(0)}%`;
 }
+
 function showColors(hex, r, g, b, h, s, l) {
   document.querySelector("section").style.backgroundColor = hex;
   document.querySelector("#hex").textContent = `${hex}`;
