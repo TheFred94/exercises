@@ -12,7 +12,6 @@ const selector = document.querySelector("input");
 function addEvents() {
   selector.addEventListener("input", getColors);
 }
-
 function getColors() {
   // Takes the value from the color input and stores it in "hex"
   hex = selector.value;
@@ -34,8 +33,10 @@ function calculateRGB(hex) {
   console.log("B", b);
   // Brings the values from the r, g, b from this function over to the convertRGBtoHSL when used as a parameter in that function
   convertRGBtoHSL(r, g, b);
+  showColors(hex, r, g, b);
 }
 
+// This takes the values of the r, g, b from the previous function and does math with it
 function convertRGBtoHSL(r, g, b) {
   r /= 255;
   g /= 255;
@@ -71,5 +72,12 @@ function convertRGBtoHSL(r, g, b) {
   s *= 100;
   l *= 100;
 
-  console.log("hsl(%f,%f%,%f%)", h, s, l);
+  console.log(h, s, l);
+  showColors(h, s, l);
+  document.querySelector("#hsl").textContent = `${h.toFixed(0)}, ${s.toFixed(0)}%, ${l.toFixed(0)}%`;
+}
+function showColors(hex, r, g, b, h, s, l) {
+  document.querySelector("section").style.backgroundColor = hex;
+  document.querySelector("#hex").textContent = `${hex}`;
+  document.querySelector("#rgb").textContent = `${r}, ${g}, ${b}`;
 }
