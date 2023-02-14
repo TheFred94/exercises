@@ -1,5 +1,6 @@
 "use strict";
 // !Return Values experiment #1
+
 // let result = greeting("Peter");
 
 // function greeting(firstName) {
@@ -42,3 +43,59 @@
 //   return `Hello ${firstName}`;
 // }
 // console.log(greeting("any name"));
+
+// ! Return Values experiment #2.4
+// ? The function is called inside a template literal
+// * Expected results = ???
+
+// const text = `Greeting is ${greeting("a name")}`;
+
+// greeting("any name");
+
+// function greeting() {
+//   return `Hello ${firstName}`;
+// }
+// console.log(greeting("any name"));
+
+// ! Exercise - capitalize string
+// Creates a const with the name
+const myName = "frederIK";
+
+// Stores the capitalize function in a variable
+const capLet = capitalize(`${myName}`);
+
+console.log(capLet);
+
+// When the return function is met, it returns the value to the capLet variable
+function capitalize(str) {
+  return `${str.substring(0, 1).toUpperCase()}${str.substring(1).toLowerCase()}`;
+}
+
+// ! Exercise - fullname
+const theName = "Peter Heronimous Lind";
+
+const nameParts = getNameParts(`${theName}`);
+
+console.log(nameParts);
+
+function getNameParts(fullname) {
+  let firstName = fullname.substring(0, fullname.indexOf(" "));
+  let middleName;
+  let lastName = fullname.substring(fullname.lastIndexOf(" ") + 1);
+
+  if ((middleName = fullname.substring(fullname.indexOf(" "), fullname.lastIndexOf(" ")) === "")) {
+    middleName = undefined;
+  } else {
+    middleName = fullname.substring(fullname.indexOf(" ") + 1, fullname.lastIndexOf(" "));
+
+    return `${firstName} ${lastName} ${middleName}`;
+  }
+
+  function createFullName(lastName, firstName, middleName) {
+    if (middleName === undefined) {
+      console.log(firstName, lastName);
+    } else {
+      console.log(firstName, middleName, lastName);
+    }
+  }
+}
