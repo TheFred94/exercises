@@ -73,7 +73,7 @@ function capitalize(str) {
 
 // ! Exercise - fullname
 // This is an example of the same use of returning a function, only a bit more complex
-const theName = "Peter Heronimous Lind";
+const theName = "peter heronimous lind";
 
 const nameParts = getNameParts(`${theName}`);
 
@@ -88,7 +88,7 @@ function getNameParts(fullname) {
   }
   // return `${lastName} ${middleName} ${firstName}`;
   // return `${firstName} ${middleName} ${lastName} `;
-  return `${middleName} ${lastName} ${firstName}`;
+  return `${middleName.substring(0, 1).toUpperCase()}${middleName.substring(1).toLowerCase()} ${lastName.substring(0, 1).toUpperCase()}${lastName.substring(1).toLowerCase()} ${firstName.substring(0, 1).toUpperCase()}${firstName.substring(1).toLowerCase()}`;
 }
 
 console.log(nameParts);
