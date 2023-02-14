@@ -5,7 +5,7 @@ document.querySelector("button").addEventListener("click", randomBackground);
 
 // Runs the function randomBackground with no parameters
 // Styles the body background as a random color with the randomColor function as the parameter for the rgbToCss
-//
+// The () is used to run the randomColor function instead of just using it as a parameter.
 function randomBackground() {
   document.body.style.backgroundColor = rgbToCSS(randomColor());
 }
