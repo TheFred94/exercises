@@ -63,6 +63,7 @@ function convertRGBtoHSL(r, g, b) {
 
   l = (min + max) / 2;
 
+
   if (max === 0 || min === 1) {
     s = 0;
   } else {
@@ -76,7 +77,9 @@ function convertRGBtoHSL(r, g, b) {
   showColors(h, s, l);
   document.querySelector("#hsl").textContent = `${h.toFixed(0)}, ${s.toFixed(0)}%, ${l.toFixed(0)}%`;
 }
+
 function showColors(hex, r, g, b) {
+
   document.querySelector("section").style.backgroundColor = hex;
   document.querySelector("#hex").textContent = `${hex}`;
   document.querySelector("#rgb").textContent = `${r}, ${g}, ${b}`;
