@@ -36,77 +36,22 @@ function convertHEXToRGB(hex) {
 }
 
 // Converts the RGB to CSS
-function convertRGBToCSS(rgb) {
-  return `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`;
-}
+function convertRGBToCSS() {}
 
 // Converts the RGB to HEX
-function convertRGBToHex(rgb) {
-  let rHex = rgb.r.toString(16).padStart(2, "0");
-  let gHex = rgb.g.toString(16).padStart(2, "0");
-  let bHex = rgb.b.toString(16).padStart(2, "0");
-
-  return `#${rHex}${gHex}${bHex}`;
-}
+function convertRGBToHex() {}
 
 // Converts the RGB to HSL
-function convertRGBToHSL(rgb) {
-  let r = rgb.r / 255;
-  let g = rgb.g / 255;
-  let b = rgb.b / 255;
-
-  let max = Math.max(r, g, b);
-  let min = Math.min(r, g, b);
-  let delta = max - min;
-
-  let h, s, l;
-
-  if (delta === 0) {
-    h = 0;
-  } else if (max === r) {
-    h = ((g - b) / delta) % 6;
-  } else if (max === g) {
-    h = (b - r) / delta + 2;
-  } else {
-    h = (r - g) / delta + 4;
-  }
-
-  h = Math.round(h * 60);
-  if (h < 0) {
-    h += 360;
-  }
-
-  l = (max + min) / 2;
-
-  if (delta === 0) {
-    s = 0;
-  } else {
-    s = delta / (1 - Math.abs(2 * l - 1));
-  }
-
-  s = Math.round(s * 100);
-  l = Math.round(l * 100);
-
-  return { h, s, l };
-}
+function convertRGBToHSL() {}
 
 // Shows the HSL
-function showHSL(hsl) {
-  console.log(`HSL(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`);
-}
+function showHSL() {}
 
 // Shows the RGB
-function showRGB(rgb) {
-  console.log(`RGB(${rgb.r}, ${rgb.g}, ${rgb.b})`);
-}
+function showRGB() {}
 
 // Shows the HEX
-function showHEX(hex) {
-  document.querySelector("#hex").textContent = "hex";
-  console.log(hex);
-}
+function showHEX() {}
 
 // Shows the colors in a box in the CSS
-function showCSS(css) {
-  document.querySelector("section").style.backgroundColor = "red";
-}
+function showCSS() {}
