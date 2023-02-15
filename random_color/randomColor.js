@@ -31,3 +31,5 @@ function rgbToCSS({ red, green, blue }) {
 
   return cssString;
 }
+// Takes the rgbValues from the above variable and use them as a parameter for the "convertRGBToCSS function".
+// ? Because they are returned in the "convertHEXToRGB" as an object we delcare r, g, b with rgbValues infront
