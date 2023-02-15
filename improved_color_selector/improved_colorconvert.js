@@ -1,13 +1,51 @@
 "use strict";
+document.addEventListener("DOMContentLoaded", loadPage);
 
-// Checks the user input color
-function getUserColor() {}
+const selector = document.querySelector("input");
+
+function loadPage() {
+  selector.addEventListener("input", getUserColor);
+}
+
+// User input ------------------------------
+
+// Returns the user color input
+function getUserColor() {
+  let userColor = selector.value;
+  return userColor;
+}
+
+// Stores the getUserColor function in a variable
+let userColor = getUserColor();
+
+// Creates a variable that stores the convertHEXToRGB function and parses on the value from getUserColor as the  "userColor" color variable
+let fromHexToRgb = convertHEXToRGB(userColor);
+console.log(userColor);
 
 // Gets the color from "getUserColor" and converts it from a HEX to an RGB
-function convertHEXToRGB() {}
+function convertHEXToRGB(hex) {
+  let r = parseInt(hex.substring(1, 3), 16);
+  let g = parseInt(hex.substring(3, 5), 16);
+  let b = parseInt(hex.substring(5, 7), 16);
 
-// Converts the RGB color to a CSS usable string for styling eg. (255, 255, 255)
-function convertRGBToCSS() {}
+  console.log("R", r);
+  console.log("G", g);
+  console.log("B", b);
+
+  return { r, g, b };
+}
+
+// let hexToRgbConverted = convertRGBToHex();
+
+// let cssString = convertRGBToCSS(hexToRgbConverted);
+// // Converts the RGB color to a CSS usable string for styling eg. (255, 255, 255)
+// console.log(cssString);
+function convertRGBToCSS({ r, g, b }) {
+  let rgbObject = { r, g, b };
+  let cssString = `rgb(${rgbObject.r}, ${rgbObject.g}, ${rgbObject.b})`;
+
+  return cssString;
+}
 
 // Not sure is this function is needed since the user input is a HEX
 function convertRGBToHex() {}
@@ -29,83 +67,3 @@ function showCSS() {}
 
 // Not sure what this should do yet
 function showSelectedUserColor() {}
-
-document.addEventListener("DOMContentLoaded", loadPage);
-
-function loadPage() {
-  console.log("Ready to color");
-  addEvents();
-}
-
-const selector = document.querySelector("input");
-
-function addEvents() {
-  selector.addEventListener("input", getColors);
-}
-function getColors() {
-  // Takes the value from the color input and stores it in "hex"
-  hex = selector.value;
-
-  // The function calculateRGB will receive the value from "hex" from this function, when used as a parameter for the function
-  calculateRGB(hex);
-}
-
-// This function uses the parameter from the getColors function
-function calculateRGB(hex) {
-  let r = parseInt(hex.substring(1, 3), 16);
-  let g = parseInt(hex.substring(3, 5), 16);
-  let b = parseInt(hex.substring(5, 7), 16);
-
-  return { r, g, b };
-
-  // Brings the values from the r, g, b from this function over to the convertRGBtoHSL when used as a parameter in that function
-  // convertRGBtoHSL(r, g, b);
-  // showColors(hex, r, g, b);
-}
-
-// This takes the values of the r, g, b from the previous function and does math with it
-function convertRGBtoHSL(r, g, b) {
-  r /= 255;
-  g /= 255;
-  b /= 255;
-
-  let h, s, l;
-
-  const min = Math.min(r, g, b);
-  const max = Math.max(r, g, b);
-
-  if (max === min) {
-    h = 0;
-  } else if (max === r) {
-    h = 60 * (0 + (g - b) / (max - min));
-  } else if (max === g) {
-    h = 60 * (2 + (b - r) / (max - min));
-  } else if (max === b) {
-    h = 60 * (4 + (r - g) / (max - min));
-  }
-
-  if (h < 0) {
-    h = h + 360;
-  }
-
-  l = (min + max) / 2;
-
-  if (max === 0 || min === 1) {
-    s = 0;
-  } else {
-    s = (max - l) / Math.min(l, 1 - l);
-  }
-  // multiply s and l by 100 to get the value in percent, rather than [0,1]
-  s *= 100;
-  l *= 100;
-
-  console.log(h, s, l);
-  showColors(h, s, l);
-  document.querySelector("#hsl").textContent = `${h.toFixed(0)}, ${s.toFixed(0)}%, ${l.toFixed(0)}%`;
-}
-
-function showColors(hex, r, g, b) {
-  document.querySelector("section").style.backgroundColor = hex;
-  document.querySelector("#hex").textContent = `${hex}`;
-  document.querySelector("#rgb").textContent = `${r}, ${g}, ${b}`;
-}
