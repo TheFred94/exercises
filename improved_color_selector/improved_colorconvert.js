@@ -9,27 +9,40 @@ function loadPage() {
 
 const selector = document.querySelector("input");
 
+// Runs the function and looks at the input and then runs the "handleUserInput" whenever there's an input.
 function addEvents() {
   selector.addEventListener("input", handleUserInput);
 }
 
+// This function looks at the user input and stores the values as variables and then runs the show functions with those values as parameters
 function handleUserInput() {
+  // The "getUserColor" function is stored as the "userColor" variable
   const userColor = getUserColor();
-  showHEX(userColor);
 
+  // The "convertHEXToRGB" function is stored in the variable "rgbValues" and thereby it's returned values as well.
   const rgbValues = convertHEXToRGB(userColor);
 
-  // ? Because they are returned in the "convertHEXToRGB" as an object we delcare r, g, b with rgbValues infront
+  //  Because they are returned in the "convertHEXToRGB" as an object we delcare r, g, b with rgbValues infront
+
+  // These two variables are equal to the result of the "convertRGBToCSS" and takes the above const "rgbValues" as an argument.
   let cssColor = convertRGBToCSS(rgbValues.r, rgbValues.g, rgbValues.b);
   let hslValues = convertRGBToHSL(rgbValues.r, rgbValues.g, rgbValues.b);
+
+  showHEX(userColor);
   showRGB(cssColor);
+
   showHSL(hslValues.h, hslValues.s, hslValues.l);
 }
 
+// Gives the input a value
+//! In this case it gives a hex value
 function getUserColor() {
   return selector.value;
 }
 
+// Looks at the "const rgbValues" which contains the function "convertHEXToRGB" with the "userColor" as the parameter.
+// It's then redefined as an argument in the form of "hex"
+// It takes the hex value from the "userColor" value and devides it into substrings and then returns an object with those values
 function convertHEXToRGB(hex) {
   let r = parseInt(hex.substring(1, 3), 16);
   let g = parseInt(hex.substring(3, 5), 16);
@@ -43,6 +56,9 @@ function convertRGBToCSS(r, g, b) {
   return cssString;
 }
 
+// Does something god knows what...
+// it takes the r, g, b as parameters and converts them with witchcraft and black magic
+// Oh yeah.. An it returns an object with h, s, l
 function convertRGBToHSL(r, g, b) {
   r /= 255;
   g /= 255;
@@ -81,15 +97,20 @@ function convertRGBToHSL(r, g, b) {
   return { h, s, l };
 }
 
+// Shows the hex color in the html and styles the background according to the "userColor"
+// ! It takes the "userColor" as a parameter
 function showHEX(userColor) {
   document.querySelector("#hex").textContent = userColor;
   document.querySelector("section").style.backgroundColor = userColor;
 }
 
+// Basically does the same as the other show functions
 function showRGB(cssRGBValues) {
   document.querySelector("#rgb").textContent = `${cssRGBValues}`;
 }
 
+// Pretty self explanatory
+// Takes a parameter and shows the result in the html
 function showHSL(h, s, l) {
   document.querySelector("#hsl").textContent = `${h.toFixed(0)}, ${s.toFixed(0)}%, ${l.toFixed(0)}%`;
 }
