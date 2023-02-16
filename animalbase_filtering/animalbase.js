@@ -16,9 +16,13 @@ function start() {
   console.log("ready");
 
   // TODO: Add event-listeners to filter and sort buttons
-  document.querySelectorAll("button").forEach((button) => button.addEventListener("click", filterAnimalsDelegator));
+  registerButtons();
 
   loadJSON();
+}
+
+function registerButtons() {
+  document.querySelectorAll("[data-action='filter']").forEach((button) => button.addEventListener("click", selectFilter));
 }
 
 async function loadJSON() {
@@ -46,6 +50,11 @@ function preapareObject(jsonObject) {
   animal.age = jsonObject.age;
 
   return animal;
+}
+
+function selectFilter(event) {
+  const filter = event.target.dataset.filter;
+  console.log(`user selected ${filter}`);
 }
 
 function filterList(animalType) {
