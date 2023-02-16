@@ -30,7 +30,6 @@ function handleUserInput() {
 
   showHEX(userColor);
   showRGB(cssColor);
-
   showHSL(hslValues.h, hslValues.s, hslValues.l);
 }
 
