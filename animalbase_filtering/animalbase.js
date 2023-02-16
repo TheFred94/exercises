@@ -55,6 +55,7 @@ function preapareObject(jsonObject) {
 function selectFilter(event) {
   const filter = event.target.dataset.filter;
   console.log(`user selected ${filter}`);
+  filterList(filter);
 }
 
 function filterList(animalType) {
