@@ -66,7 +66,7 @@ function selectFilter(event) {
   filterList(filter);
 }
 function selectSort(event) {
-  const sortBy = event.target.dataset.sort;
+  // This line of code is using the dataset property of the event.target object to get the value of a data-sort attribute on the HTML element that triggered an event.  const sortBy = event.target.dataset.sort;
   console.log(`user selected ${sortBy}`);
   //  Runs the filterList function with the filter variable as it's parameter
   sortList(sortBy);
