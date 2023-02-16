@@ -22,6 +22,8 @@ function start() {
 }
 
 function registerButtons() {
+  // Uses the data-action from the buttons tags in the html
+  //   When clicked we run the selectFilter function
   document.querySelectorAll("[data-action='filter']").forEach((button) => button.addEventListener("click", selectFilter));
 }
 
@@ -36,11 +38,12 @@ async function loadJSON() {
 function prepareObjects(jsonData) {
   allAnimals = jsonData.map(preapareObject);
 
-  // TODO: This might not be the function we want to call first
+  // displays the list with the allAnimals as it's parameter
   displayList(allAnimals);
 }
 
 function preapareObject(jsonObject) {
+  // We create a variable with animal
   const animal = Object.create(Animal);
 
   const texts = jsonObject.fullname.split(" ");
@@ -52,12 +55,16 @@ function preapareObject(jsonObject) {
   return animal;
 }
 
+// This function is run when the user clicks a button
+// event is set as its parameter and is used in the filter variable inside the function
 function selectFilter(event) {
   const filter = event.target.dataset.filter;
   console.log(`user selected ${filter}`);
+  //  Runs the filterList function with the filter variable as it's parameter
   filterList(filter);
 }
 
+// The filterBy is used as an argument and it's value is taken from the filter parameter from the selectFilter function
 function filterList(filterBy) {
   // Create a filtered list of only cats
   let filteredList = allAnimals;
@@ -67,8 +74,10 @@ function filterList(filterBy) {
   } else if (filterBy === "dog") {
     filteredList = allAnimals.filter(isDog);
   }
+  // Runs the displayList function with the filteredList variable as it's parameter
   displayList(filteredList);
 }
+
 function isCat(animal) {
   // We write this instead of usin an if statement
   return animal.type === "cat";
@@ -78,6 +87,8 @@ function isDog(animal) {
   return animal.type === "dog";
 }
 
+// Clears the html tbody every time the button is clicked
+// The animals parameter is used as an argument for this function and it's value is equal to filteredList
 function displayList(animals) {
   // clear the list
   document.querySelector("#list tbody").innerHTML = "";
@@ -86,6 +97,7 @@ function displayList(animals) {
   animals.forEach(displayAnimal);
 }
 
+// Displays the animals in the html table and creates clones for all the objects in the array
 function displayAnimal(animal) {
   // create clone
   const clone = document.querySelector("template#animal").content.cloneNode(true);
@@ -98,12 +110,4 @@ function displayAnimal(animal) {
 
   // append clone to list
   document.querySelector("#list tbody").appendChild(clone);
-}
-
-function filterAnimalsDelegator() {
-  animal = this.dataset.filter;
-
-  isCat();
-  console.log("Is this a cat", isCat());
-  console.log("Is this a dog", isDog());
 }
