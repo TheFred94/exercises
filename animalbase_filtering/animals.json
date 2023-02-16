@@ -4,10 +4,6 @@
     "age": 9
   },
   {
-    "fullname": "Horsey the horsing horse",
-    "age": 10
-  },
-  {
     "fullname": "Mia the black cat",
     "age": 9
   },
@@ -22,5 +18,9 @@
   {
     "fullname": "ScoobyDoo the wondering dog",
     "age": 58
+  },
+  {
+    "fullname": "Horsey the horsing horse",
+    "age": 10
   }
 ]
