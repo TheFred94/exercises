@@ -21,10 +21,12 @@ function start() {
   loadJSON();
 }
 
+//   When clicked it looks at the data-action and then at the data-sort and then sorts by that
+//   When clicked we run the selectFilter function
 function registerButtons() {
-  // Uses the data-action from the buttons tags in the html
-  //   When clicked we run the selectFilter function
   document.querySelectorAll("[data-action='filter']").forEach((button) => button.addEventListener("click", selectFilter));
+
+  document.querySelectorAll("[data-action='sort']").forEach((button) => button.addEventListener("click", selectSort));
 }
 
 async function loadJSON() {
@@ -62,6 +64,12 @@ function selectFilter(event) {
   console.log(`user selected ${filter}`);
   //  Runs the filterList function with the filter variable as it's parameter
   filterList(filter);
+}
+function selectSort(event) {
+  const sortBy = event.target.dataset.sort;
+  console.log(`user selected ${sortBy}`);
+  //  Runs the filterList function with the filter variable as it's parameter
+  sortList(sortBy);
 }
 
 // The filterBy is used as an argument and it's value is taken from the filter parameter from the selectFilter function
