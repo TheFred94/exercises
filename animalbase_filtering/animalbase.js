@@ -87,6 +87,28 @@ function isDog(animal) {
   return animal.type === "dog";
 }
 
+function sortList() {
+  const list = allAnimals;
+
+  const sortedList = list.sort(sortByType);
+  displayList(sortedList);
+}
+
+function sortByName(animalA, animalB) {
+  if (animalA.name > animalB.name) {
+    return 1;
+  } else {
+    return -1;
+  }
+}
+function sortByType(animalA, animalB) {
+  if (animalA.type > animalB.type) {
+    return 1;
+  } else {
+    return -1;
+  }
+}
+
 // Clears the html tbody every time the button is clicked
 // The animals parameter is used as an argument for this function and it's value is equal to filteredList
 function displayList(animals) {
