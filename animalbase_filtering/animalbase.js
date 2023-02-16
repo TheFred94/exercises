@@ -48,6 +48,26 @@ function preapareObject(jsonObject) {
   return animal;
 }
 
+function filterList(animalType) {
+  // Create a filtered list of only cats
+  let filteredList = allAnimals;
+
+  if (animalType === "cat") {
+    filteredList = allAnimals.filter(isCat);
+  } else if (animalType === "dog") {
+    filteredList = allAnimals.filter(isDog);
+  }
+  displayList(filteredList);
+}
+function isCat(animal) {
+  // We write this instead of usin an if statement
+  return animal.type === "cat";
+}
+function isDog(animal) {
+  // We write this instead of usin an if statement
+  return animal.type === "dog";
+}
+
 function displayList(animals) {
   // clear the list
   document.querySelector("#list tbody").innerHTML = "";
@@ -76,19 +96,4 @@ function filterAnimalsDelegator() {
   isCat();
   console.log("Is this a cat", isCat());
   console.log("Is this a dog", isDog());
-}
-
-function isCat() {
-  if (animal === "cat") {
-    return true;
-  } else {
-    return false;
-  }
-}
-function isDog() {
-  if (animal === "dog") {
-    return true;
-  } else {
-    return false;
-  }
 }
