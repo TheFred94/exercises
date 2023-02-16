@@ -58,13 +58,13 @@ function selectFilter(event) {
   filterList(filter);
 }
 
-function filterList(animalType) {
+function filterList(filterBy) {
   // Create a filtered list of only cats
   let filteredList = allAnimals;
 
-  if (animalType === "cat") {
+  if (filterBy === "cat") {
     filteredList = allAnimals.filter(isCat);
-  } else if (animalType === "dog") {
+  } else if (filterBy === "dog") {
     filteredList = allAnimals.filter(isDog);
   }
   displayList(filteredList);
