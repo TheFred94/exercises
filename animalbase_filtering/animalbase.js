@@ -87,10 +87,14 @@ function isDog(animal) {
   return animal.type === "dog";
 }
 
-function sortList() {
-  const list = allAnimals;
-
-  const sortedList = list.sort(sortByType);
+// We sortBy like we
+function sortList(sortBy) {
+  let sortedList = allAnimals;
+  if (sortBy === "name") {
+    sortedList = sortedList.sort(sortByName);
+  } else if (sortBy === "type") {
+    sortedList = sortedList.sort(sortByType);
+  }
   displayList(sortedList);
 }
 
