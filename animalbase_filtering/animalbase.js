@@ -83,6 +83,7 @@ function filterList(filterBy) {
   } else if (filterBy === "dog") {
     filteredList = allAnimals.filter(isDog);
   }
+
   // Runs the displayList function with the filteredList variable as it's parameter.
   // filtered list is a variable that contains the allAnimals list
   displayList(filteredList);
