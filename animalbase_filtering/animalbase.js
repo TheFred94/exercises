@@ -83,16 +83,17 @@ function filterList(filterBy) {
   } else if (filterBy === "dog") {
     filteredList = allAnimals.filter(isDog);
   }
-  // Runs the displayList function with the filteredList variable as it's parameter
+  // Runs the displayList function with the filteredList variable as it's parameter.
+  // filtered list is a variable that contains the allAnimals list
   displayList(filteredList);
 }
 
 function isCat(animal) {
-  // We write this instead of usin an if statement
+  // We write this instead of using an if statement
   return animal.type === "cat";
 }
 function isDog(animal) {
-  // We write this instead of usin an if statement
+  // We write this instead of using an if statement
   return animal.type === "dog";
 }
 
