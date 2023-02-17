@@ -93,6 +93,10 @@ function convertRGBToHSL(r, g, b) {
   s *= 100;
   l *= 100;
 
+  h = Math.floor(h);
+  s = Math.floor(s);
+  l = Math.floor(l);
+
   return { h, s, l };
 }
 
@@ -109,7 +113,6 @@ function showRGB(cssRGBValues) {
 }
 
 // Pretty self explanatory
-// Takes a parameter and shows the result in the html
 function showHSL(h, s, l) {
-  document.querySelector("#hsl").textContent = `${h.toFixed(0)}, ${s.toFixed(0)}%, ${l.toFixed(0)}%`;
+  document.querySelector("#hsl").textContent = `${h}°, ${s}%, ${l}%`;
 }
