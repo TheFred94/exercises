@@ -46,7 +46,6 @@ function convertHEXToRGB(hex) {
   let r = parseInt(hex.substring(1, 3), 16);
   let g = parseInt(hex.substring(3, 5), 16);
   let b = parseInt(hex.substring(5, 7), 16);
-  return { r, g, b };
 }
 
 // Converts the r, g, b values from the object into a string e.g rgb(255, 255, 255)
