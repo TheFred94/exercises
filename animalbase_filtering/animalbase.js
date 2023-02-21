@@ -12,6 +12,7 @@ const Animal = {
   age: 0,
 };
 
+// A global object with all the "settings" for the sort and filter functions
 const settings = {
   filter: "all",
   sortBy: "name",
@@ -68,10 +69,12 @@ function preapareObject(jsonObject) {
 function selectFilter(event) {
   const filter = event.target.dataset.filter;
   console.log(`user selected ${filter}`);
-  //  Runs the filterList function with the filter variable as it's parameter
+  //  Runs the setFilter function with the global setting filter as a parameter
   setFilter(filter);
 }
 
+// the global filter is parsed into this function and runs the buildList function
+// When user clicks filter the list with that dataset will be build through the buildList function
 function setFilter(filter) {
   settings.filterBy = filter;
   buildList();
@@ -100,7 +103,7 @@ function setSort(sortBy, sortDir) {
   buildList();
 }
 
-// The filterBy is used as an argument and it's value is taken from the filter parameter from the selectFilter function
+// FilterList takes the parameter filteredList
 function filterList(filteredList) {
   // Create a filtered list of only cats
   // let filteredList = allAnimals;
@@ -128,7 +131,6 @@ function isDog(animal) {
 // A more generic sorting function using closure. The sortByPropery is enclosed inside the sortList function.
 // The sortBy parameter can then be used by the sortByProperty function. We put the sortBy in [ ] instead of using another property from the array like name, age, type etc.
 function sortList(sortedList) {
-  // let sortedList = allAnimals;
   let direction = 1;
   if (settings.sortDir === "desc") {
     direction = -1;
@@ -148,6 +150,9 @@ function sortList(sortedList) {
   return sortedList;
 }
 
+// Builds the list with the current list and with the sorted list
+// The default is "all" on load
+// When clicked the filterList and sortList is equal to the data(button) clicked
 function buildList() {
   const currentList = filterList(allAnimals);
   const sortedList = sortList(currentList);
