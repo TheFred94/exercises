@@ -237,18 +237,32 @@ function tryToToMakeAWinner(selectedAnimal) {
   } else if (numberOfWinners >= 2) {
     console.log("There can only two winners!");
     removeAorB(winners[0], winners[1]);
+  } else {
+    makeWinner(selectedAnimal);
   }
-
-  console.log(`There are ${numberOfWinners} winners`);
-  // console.log(`The other winner of this type is ${other.name}`);
-  console.log(other);
-  // Just for testing
 
   makeWinner(selectedAnimal);
 
-  function removeOther(other) {}
+  // Ask the user to ignore or remove 'other'
+  function removeOther(other) {
+    // if ignore - do nothing
+    // if remove other:
+    removeWinner(other);
+    makeWinner(selectedAnimal);
+  }
 
-  function removeAorB(winnerA, winnerB) {}
+  // ask the user to ignore or remove A or B
+  function removeAorB(winnerA, winnerB) {
+    // if ignore - do nothing
+
+    // if removeA
+    removeWinner(winnerA);
+    makeWinner(selectedAnimal);
+
+    // else - if removeB
+    removeWinner(winnerB);
+    makeWinner(selectedAnimal);
+  }
 
   function removeWinner(winnerAnimal) {
     winnerAnimal.winner = false;
