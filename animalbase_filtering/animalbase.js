@@ -215,11 +215,33 @@ function displayAnimal(animal) {
     if (animal.winner === true) {
       animal.winner = false;
     } else {
-      animal.winner = true;
+      tryToToMakeAWinner(animal);
     }
     buildList();
   }
 
   // append clone to list
   document.querySelector("#list tbody").appendChild(clone);
+}
+
+function tryToToMakeAWinner(selectedAnimal) {
+  const winners = allAnimals.filter((animal) => animal.winner);
+
+  console.log(winners);
+
+  // Just for testing
+
+  makeWinner(selectedAnimal);
+
+  function removeOther(other) {}
+
+  function removeAorB(winnerA, winnerB) {}
+
+  function removeWinner(winnerAnimal) {
+    winnerAnimal.winner = false;
+  }
+
+  function makeWinner(animal) {
+    animal.winner = true;
+  }
 }
