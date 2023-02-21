@@ -52,3 +52,29 @@ td[data-field="winner"][data-winner="false"]::after {
 #list tbody tr:nth-child(even) td {
   border-right: rgb(171, 219, 252) 1px dotted;
 }
+.hide {
+  visibility: hidden;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button.close_button {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.dialog {
+  padding: 1rem;
+  background-color: antiquewhite;
+}
