@@ -98,24 +98,23 @@ function isDog(animal) {
   return animal.type === "dog";
 }
 
-// We sortBy like we
+// A more generic sorting function using closure. The sortByPropery is enclosed inside the sortList function.
+// The sortBy parameter can then be used by the sortByProperty function. We put the sortBy in [ ] instead of using another property from the array like name, age, type etc.
 function sortList(sortBy) {
   let sortedList = allAnimals;
-  if (sortBy === "name") {
-    sortedList = sortedList.sort(sortByName);
-  } else if (sortBy === "type") {
-    sortedList = sortedList.sort(sortByType);
+
+  sortedList = sortedList.sort(sortByProperty);
+  function sortByProperty(animalA, animalB) {
+    // console.log(`sortBy is ${sortBy}`);
+    if (animalA[sortBy] > animalB[sortBy]) {
+      return 1;
+    } else {
+      return -1;
+    }
   }
   displayList(sortedList);
 }
 
-function sortByName(animalA, animalB) {
-  if (animalA.name > animalB.name) {
-    return 1;
-  } else {
-    return -1;
-  }
-}
 function sortByType(animalA, animalB) {
   if (animalA.type > animalB.type) {
     return 1;
