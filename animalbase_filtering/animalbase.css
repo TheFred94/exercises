@@ -5,10 +5,12 @@
 td {
   height: 50px;
   width: 120px;
+  text-align: center;
 }
 #sorting th.sortby {
   background-color: aquamarine;
 }
+
 tr {
   height: 50px;
   width: 120px;
