@@ -68,9 +68,18 @@ function selectFilter(event) {
 function selectSort(event) {
   //   This line of code is using the dataset property of the event.target object to get the value of a data-sort attribute on the HTML element that triggered an event.
   const sortBy = event.target.dataset.sort;
+  const sortDir = event.target.dataset.sortDirection;
+  console.log(`user selected ${sortBy} - ${sortDir}`);
+
+  // Toggles the direction from asc to desc or vice versa!
+  if (sortDir === "asc") {
+    event.target.dataset.sortDirection = "desc";
+  } else {
+    event.target.dataset.sortDirection = "asc";
+  }
   console.log(`user selected ${sortBy}`);
   //  Runs the filterList function with the filter variable as it's parameter
-  sortList(sortBy);
+  sortList(sortBy, sortDir);
 }
 
 // The filterBy is used as an argument and it's value is taken from the filter parameter from the selectFilter function
@@ -100,16 +109,22 @@ function isDog(animal) {
 
 // A more generic sorting function using closure. The sortByPropery is enclosed inside the sortList function.
 // The sortBy parameter can then be used by the sortByProperty function. We put the sortBy in [ ] instead of using another property from the array like name, age, type etc.
-function sortList(sortBy) {
+function sortList(sortBy, sortDir) {
   let sortedList = allAnimals;
-
+  let direction = 1;
+  if (sortDir === "desc") {
+    direction = -1;
+  } else {
+    direction = 1;
+  }
   sortedList = sortedList.sort(sortByProperty);
+
   function sortByProperty(animalA, animalB) {
     // console.log(`sortBy is ${sortBy}`);
-    if (animalA[sortBy] > animalB[sortBy]) {
-      return 1;
+    if (animalA[sortBy] < animalB[sortBy]) {
+      return -1 * direction;
     } else {
-      return -1;
+      return 1 * direction;
     }
   }
   displayList(sortedList);
