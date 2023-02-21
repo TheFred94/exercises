@@ -87,6 +87,13 @@ function selectSort(event) {
   const sortDir = event.target.dataset.sortDirection;
   console.log(`user selected ${sortBy} - ${sortDir}`);
 
+  // Find "old" sortBy element, and remove .sortBy class
+  const oldElement = document.querySelector(`[data-sort='${settings.sortBy}']`);
+  oldElement.classList.remove("sortby");
+
+  // Indicate active sort
+  event.target.classList.add("sortby");
+
   // Toggles the direction from asc to desc or vice versa!
   if (sortDir === "asc") {
     event.target.dataset.sortDirection = "desc";
