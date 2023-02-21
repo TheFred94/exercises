@@ -12,6 +12,12 @@ const Animal = {
   age: 0,
 };
 
+const settings = {
+  filter: "all",
+  sortBy: "name",
+  sortDir: "asc",
+};
+
 function start() {
   console.log("ready");
 
@@ -63,8 +69,14 @@ function selectFilter(event) {
   const filter = event.target.dataset.filter;
   console.log(`user selected ${filter}`);
   //  Runs the filterList function with the filter variable as it's parameter
-  filterList(filter);
+  setFilter(filter);
 }
+
+function setFilter(filter) {
+  settings.filterBy = filter;
+  buildList();
+}
+
 function selectSort(event) {
   //   This line of code is using the dataset property of the event.target object to get the value of a data-sort attribute on the HTML element that triggered an event.
   const sortBy = event.target.dataset.sort;
@@ -79,23 +91,29 @@ function selectSort(event) {
   }
   console.log(`user selected ${sortBy}`);
   //  Runs the filterList function with the filter variable as it's parameter
-  sortList(sortBy, sortDir);
+  setSort(sortBy, sortDir);
+}
+
+function setSort(sortBy, sortDir) {
+  settings.sortBy = sortBy;
+  settings.sortDir = sortDir;
+  buildList();
 }
 
 // The filterBy is used as an argument and it's value is taken from the filter parameter from the selectFilter function
-function filterList(filterBy) {
+function filterList(filteredList) {
   // Create a filtered list of only cats
-  let filteredList = allAnimals;
+  // let filteredList = allAnimals;
 
-  if (filterBy === "cat") {
+  if (settings.filterBy === "cat") {
     filteredList = allAnimals.filter(isCat);
-  } else if (filterBy === "dog") {
+  } else if (settings.filterBy === "dog") {
     filteredList = allAnimals.filter(isDog);
   }
 
   // Runs the displayList function with the filteredList variable as it's parameter.
   // filtered list is a variable that contains the allAnimals list
-  displayList(filteredList);
+  return filteredList;
 }
 
 function isCat(animal) {
@@ -109,24 +127,30 @@ function isDog(animal) {
 
 // A more generic sorting function using closure. The sortByPropery is enclosed inside the sortList function.
 // The sortBy parameter can then be used by the sortByProperty function. We put the sortBy in [ ] instead of using another property from the array like name, age, type etc.
-function sortList(sortBy, sortDir) {
-  let sortedList = allAnimals;
+function sortList(sortedList) {
+  // let sortedList = allAnimals;
   let direction = 1;
-  if (sortDir === "desc") {
+  if (settings.sortDir === "desc") {
     direction = -1;
   } else {
-    direction = 1;
+    settings.direction = 1;
   }
   sortedList = sortedList.sort(sortByProperty);
 
   function sortByProperty(animalA, animalB) {
     // console.log(`sortBy is ${sortBy}`);
-    if (animalA[sortBy] < animalB[sortBy]) {
+    if (animalA[settings.sortBy] < animalB[settings.sortBy]) {
       return -1 * direction;
     } else {
       return 1 * direction;
     }
   }
+  return sortedList;
+}
+
+function buildList() {
+  const currentList = filterList(allAnimals);
+  const sortedList = sortList(currentList);
   displayList(sortedList);
 }
 
