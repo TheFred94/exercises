@@ -10,6 +10,7 @@ const Animal = {
   desc: "-unknown animal-",
   type: "",
   age: 0,
+  star: false,
 };
 
 // A global object with all the "settings" for the sort and filter functions
@@ -47,8 +48,8 @@ async function loadJSON() {
 function prepareObjects(jsonData) {
   allAnimals = jsonData.map(preapareObject);
 
-  // displays the list with the allAnimals as it's parameter
-  displayList(allAnimals);
+  // fixed so we sort and filter on the first load
+  buildList();
 }
 
 function preapareObject(jsonObject) {
@@ -159,13 +160,13 @@ function buildList() {
   displayList(sortedList);
 }
 
-function sortByType(animalA, animalB) {
-  if (animalA.type > animalB.type) {
-    return 1;
-  } else {
-    return -1;
-  }
-}
+// function sortByType(animalA, animalB) {
+//   if (animalA.type > animalB.type) {
+//     return 1;
+//   } else {
+//     return -1;
+//   }
+// }
 
 // Clears the html tbody every time the button is clicked
 // The animals parameter is used as an argument for this function and it's value is equal to filteredList
@@ -183,10 +184,27 @@ function displayAnimal(animal) {
   const clone = document.querySelector("template#animal").content.cloneNode(true);
 
   // set clone data
+  clone.querySelector("[data-field=star]").textContent = animal.star;
   clone.querySelector("[data-field=name]").textContent = animal.name;
   clone.querySelector("[data-field=desc]").textContent = animal.desc;
   clone.querySelector("[data-field=type]").textContent = animal.type;
   clone.querySelector("[data-field=age]").textContent = animal.age;
+
+  if (animal.star === true) {
+    clone.querySelector("[data-field=star]").textContent = "⭐";
+  } else {
+    clone.querySelector("[data-field=star]").textContent = "☆";
+  }
+  clone.querySelector("[data-field=star]").addEventListener("click", clickStar);
+
+  function clickStar() {
+    if (animal.star === true) {
+      animal.star = false;
+    } else {
+      animal.star = true;
+    }
+    buildList();
+  }
 
   // append clone to list
   document.querySelector("#list tbody").appendChild(clone);
