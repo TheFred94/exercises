@@ -11,6 +11,7 @@ const Animal = {
   type: "",
   age: 0,
   star: false,
+  winner: false,
 };
 
 // A global object with all the "settings" for the sort and filter functions
@@ -196,11 +197,25 @@ function displayAnimal(animal) {
   }
   clone.querySelector("[data-field=star]").addEventListener("click", clickStar);
 
+  // Checks if the star is either true or false then adds or removes it
   function clickStar() {
     if (animal.star === true) {
       animal.star = false;
     } else {
       animal.star = true;
+    }
+    buildList();
+  }
+
+  // Winners
+
+  clone.querySelector("[data-field=winner]").dataset.winner = animal.winner;
+  clone.querySelector("[data-field=winner]").addEventListener("click", clickWinner);
+  function clickWinner() {
+    if (animal.winner === true) {
+      animal.winner = false;
+    } else {
+      animal.winner = true;
     }
     buildList();
   }

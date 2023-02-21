@@ -18,6 +18,13 @@ tr {
 #sorting th.sortby[data-sort-direction="asc"]::after {
   content: " ⬇️ ";
 }
+td[data-field="winner"]::after {
+  content: " 🥇 ";
+}
+td[data-field="winner"][data-winner="false"]::after {
+  filter: grayscale(1);
+}
+
 #sorting th.sortby[data-sort-direction="desc"]::after {
   content: " ⬆️ ";
 }
@@ -31,9 +38,9 @@ tr {
 }
 
 .star {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  cursor: pointer;
+}
+.winner {
   cursor: pointer;
 }
 
