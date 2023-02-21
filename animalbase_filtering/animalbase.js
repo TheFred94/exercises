@@ -227,8 +227,21 @@ function displayAnimal(animal) {
 function tryToToMakeAWinner(selectedAnimal) {
   const winners = allAnimals.filter((animal) => animal.winner);
 
-  console.log(winners);
+  const numberOfWinners = winners.length;
+  const other = winners.filter((animal) => animal.type === selectedAnimal.type).shift();
 
+  // If there is another of the same type
+  if (other !== undefined) {
+    console.log("There can only be one winner of each type!");
+    removeOther(other);
+  } else if (numberOfWinners >= 2) {
+    console.log("There can only two winners!");
+    removeAorB(winners[0], winners[1]);
+  }
+
+  console.log(`There are ${numberOfWinners} winners`);
+  // console.log(`The other winner of this type is ${other.name}`);
+  console.log(other);
   // Just for testing
 
   makeWinner(selectedAnimal);
